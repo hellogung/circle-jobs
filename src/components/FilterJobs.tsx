@@ -32,7 +32,7 @@ const FilterJob = ({
             type="text"
             id="job-description"
             placeholder="Filter by title, benefits, companies, expertise"
-            className="w-full p-2 pl-12 border border-gray-300 rounded outline-0"
+            className="w-full p-2 pl-12 border border-gray-300 text-gray-600 rounded outline-0"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
@@ -50,7 +50,7 @@ const FilterJob = ({
             type="text"
             id="location"
             placeholder="Filter by city, state, zip code or country"
-            className="w-full p-2 pl-12 border border-gray-300 rounded outline-0"
+            className="w-full p-2 pl-12 border border-gray-300 text-gray-600 rounded outline-0"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
           />

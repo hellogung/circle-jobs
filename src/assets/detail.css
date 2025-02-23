@@ -1,0 +1,29 @@
+@import "tailwindcss";
+/* @import "tailwindcss/components"; */
+@import "tailwindcss/utilities";
+
+#content {
+  @apply text-gray-700;
+
+  p {
+    @apply mb-4;
+  }
+
+  pre code{
+    @apply text-wrap;
+  }
+
+  ul {
+    @apply mb-4 list-disc list-inside;
+  }
+
+  strong {
+    @apply text-2xl;
+  }
+}
+
+#how-to-apply{
+  a{
+    @apply text-blue-500 underline font-semibold;
+  }
+}

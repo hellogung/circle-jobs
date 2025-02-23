@@ -3,6 +3,8 @@ import ListJobs from "../components/ListJobs";
 import { JobProps } from "../types/jobProps";
 import { sliceArray } from "../utils/sliceArray";
 import FilterJob from "../components/FilterJobs";
+import Card from "../components/Card";
+import api from "../utils/api";
 
 const HomePage = () => {
   const [jobs, setJobs] = useState<JobProps[]>([]);
@@ -25,9 +27,9 @@ const HomePage = () => {
   const fetchJobs = async (desc = "", loc = "", isFullTime = false) => {
     setOnSearch(true);
     try {
-      const url = `https://dev6.dansmultipro.com/api/recruitment/positions.json?description=${desc}&location=${loc}&full_time=${isFullTime}`;
-      const response = await fetch(url);
-      const data = await response.json();
+      const url = `/api/recruitment/positions.json?description=${desc}&location=${loc}&full_time=${isFullTime}`;
+      const response = await api.get(url)
+      const data = response.data
       setAllJobs(data);
       setJobs(sliceArray(data, 0, 5));
       setCurrentIndex(5);
@@ -70,7 +72,7 @@ const HomePage = () => {
       {onSearch ? (
         <p>Loading ...</p>
       ) : (
-        <div className="border-4 border-gray-200 rounded-lg p-5 my-5">
+        <Card>
           <h1 className="text-gray-700 font-bold text-3xl mb-5">
             {isSeacrhClicked && jobs.length > 0 ? `Showing ${allJobs.length} jobs` : "Job List"}
             </h1>
@@ -85,7 +87,7 @@ const HomePage = () => {
               </button>
             </div>
           )}
-        </div>
+          </Card>
       )}
     </>
   );
