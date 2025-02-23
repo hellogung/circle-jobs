@@ -19,10 +19,17 @@ const FilterJob = ({
   setFullTime,
   onSearch,
 }: FilterJobProps) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault(); // Mencegah reload halaman (default form behavior)
+      onSearch();
+    }
+  };
+
   return (
-    <div className="flex items-end gap-4">
+    <div className="flex items-center md:items-end flex-col md:flex-row gap-4">
       {/* Job Description */}
-      <div className="flex-1">
+      <div className="flex-1 w-full">
         <label htmlFor="job-description" className="block font-bold mb-1">
           Job Description
         </label>
@@ -32,15 +39,16 @@ const FilterJob = ({
             type="text"
             id="job-description"
             placeholder="Filter by title, benefits, companies, expertise"
-            className="w-full p-2 pl-12 border border-gray-300 text-gray-600 rounded outline-0"
+            className="w-full p-2 pl-12 border-2 bg-white border-gray-300 text-gray-600 rounded outline-0 hover:border-gray-500 focus:border-gray-500 transition-all duration-300"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            onKeyDown={handleKeyDown}
           />
         </div>
       </div>
 
       {/* Location */}
-      <div className="flex-1">
+      <div className="flex-1 w-full">
         <label htmlFor="location" className="block font-bold mb-1">
           Location
         </label>
@@ -50,15 +58,16 @@ const FilterJob = ({
             type="text"
             id="location"
             placeholder="Filter by city, state, zip code or country"
-            className="w-full p-2 pl-12 border border-gray-300 text-gray-600 rounded outline-0"
+            className="w-full p-2 pl-12 border-2 bg-white border-gray-300 text-gray-600 rounded outline-0 hover:border-gray-500 focus:border-gray-500 transition-all duration-300"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
+            onKeyDown={handleKeyDown}
           />
         </div>
       </div>
 
       {/* Checkbox and Button Filter */}
-      <div className="flex items-center gap-x-5">
+      <div className="flex justify-between items-center gap-x-5 md:w-fit w-full">
         <div className="flex items-center gap-2">
           <input
             type="checkbox"
@@ -72,7 +81,7 @@ const FilterJob = ({
         </div>
 
         <button
-          className="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-600"
+          className="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-600 cursor-pointer"
           onClick={onSearch}
         >
           Search

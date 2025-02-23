@@ -28,8 +28,8 @@ const HomePage = () => {
     setOnSearch(true);
     try {
       const url = `/api/recruitment/positions.json?description=${desc}&location=${loc}&full_time=${isFullTime}`;
-      const response = await api.get(url)
-      const data = response.data
+      const response = await api.get(url);
+      const data = response.data;
       setAllJobs(data);
       setJobs(sliceArray(data, 0, 5));
       setCurrentIndex(5);
@@ -42,7 +42,7 @@ const HomePage = () => {
   };
 
   const handleSearch = () => {
-    setIsSeacrhClicked(true)
+    setIsSeacrhClicked(true);
     fetchJobs(description, location, fullTime);
   };
 
@@ -74,20 +74,22 @@ const HomePage = () => {
       ) : (
         <Card>
           <h1 className="text-gray-700 font-bold text-3xl mb-5">
-            {isSeacrhClicked && jobs.length > 0 ? `Showing ${allJobs.length} jobs` : "Job List"}
-            </h1>
+            {isSeacrhClicked && jobs.length > 0
+              ? `Showing ${allJobs.length} jobs`
+              : "Job List"}
+          </h1>
           <ListJobs jobs={jobs} />
           {currentIndex < allJobs.length && ( // Cek apakah masih ada data yang bisa dimuat
             <div className="flex justify-center">
               <button
                 onClick={loadMoreJobs}
-                className="bg-blue-500 text-white px-4 py-2 rounded text-center cursor-pointer"
+                className="border-2 border-blue-500 hover:bg-gray-100 text-blue-500 px-4 py-2 rounded text-center transition duration-300 cursor-pointer"
               >
                 More Jobs
               </button>
             </div>
           )}
-          </Card>
+        </Card>
       )}
     </>
   );

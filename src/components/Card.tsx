@@ -8,7 +8,7 @@ const Card = ({ children, padding = "p-5", className = "" }: CardProps) => {
   return (
     <>
       <div
-        className={`border-4 border-gray-200 rounded-lg my-5 ${padding} ${className}`}
+        className={`border-4 bg-white border-gray-200 rounded-lg my-5 ${padding} ${className}`}
       >
         {children}
       </div>

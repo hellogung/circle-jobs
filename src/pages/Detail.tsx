@@ -6,6 +6,8 @@ import api from "../utils/api";
 import "../assets/detail.css";
 import { ExternalLinkIcon, ArrowLeft } from "lucide-react";
 import { timeAgo } from "../utils/timeAgo";
+import { Helmet } from "react-helmet-async";
+import withAuth from "../components/WithAuth";
 
 const DetailPage = () => {
   const { id } = useParams();
@@ -67,6 +69,10 @@ const DetailPage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{title} | Github Jobs</title>
+      </Helmet>
+
       {/* Link Navigate */}
       <Link
         to="#"
@@ -86,8 +92,12 @@ const DetailPage = () => {
           <p className="text-gray-500">
             {type} / {location}
           </p>
-          <h1 className="text-gray-700 text-3xl md:text-4xl font-bold">{title}</h1>
-          <small className="text-gray-500 text-sm">{timeAgo(created_at as string)}</small>
+          <h1 className="text-gray-700 text-3xl md:text-4xl font-bold">
+            {title}
+          </h1>
+          <small className="text-gray-500 text-sm">
+            {timeAgo(created_at as string)}
+          </small>
         </div>
         <div className="flex flex-col md:flex-row gap-x-10 py-5">
           <div id="content" className="w-full md:flex-4">
@@ -105,8 +115,11 @@ const DetailPage = () => {
                 src={company_logo}
                 className="aspect-video bg-gray-300 text-center rounded-xl my-3"
                 alt={company}
-                onError={(e) => (e.currentTarget.src = "/placeholder-image.webp")}
+                onError={(e) =>
+                  (e.currentTarget.src = "/placeholder-image.webp")
+                }
                 title={company}
+                loading="lazy"
               />
               <div className="flex items-center gap-x-2">
                 <ExternalLinkIcon className="w-3.5" />
@@ -137,4 +150,4 @@ const DetailPage = () => {
   );
 };
 
-export default DetailPage;
+export default withAuth(DetailPage);
