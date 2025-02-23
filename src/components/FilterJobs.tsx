@@ -81,7 +81,7 @@ const FilterJob = ({
         </div>
 
         <button
-          className="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-600 cursor-pointer"
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-gray-600 cursor-pointer"
           onClick={onSearch}
         >
           Search

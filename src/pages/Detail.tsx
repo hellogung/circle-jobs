@@ -1,4 +1,5 @@
 import { Link, useParams } from "react-router";
+import { Helmet } from "react-helmet-async";
 import Card from "../components/Card";
 import { useEffect, useState } from "react";
 import { JobDetailProps } from "../types/jobDetailProps";
@@ -6,7 +7,6 @@ import api from "../utils/api";
 import "../assets/detail.css";
 import { ExternalLinkIcon, ArrowLeft } from "lucide-react";
 import { timeAgo } from "../utils/timeAgo";
-import { Helmet } from "react-helmet-async";
 import withAuth from "../components/WithAuth";
 
 const DetailPage = () => {
@@ -70,9 +70,8 @@ const DetailPage = () => {
   return (
     <>
       <Helmet>
-        <title>{title} | Github Jobs</title>
+        <title>Circle Jobs</title>
       </Helmet>
-
       {/* Link Navigate */}
       <Link
         to="#"

@@ -5,6 +5,7 @@ import { sliceArray } from "../utils/sliceArray";
 import FilterJob from "../components/FilterJobs";
 import Card from "../components/Card";
 import api from "../utils/api";
+import { Helmet } from "react-helmet-async";
 
 const HomePage = () => {
   const [jobs, setJobs] = useState<JobProps[]>([]);
@@ -53,10 +54,14 @@ const HomePage = () => {
   };
 
   if (loading) return <p>Loading ...</p>;
-  if (error) return <p>{error}</p>;
+  if (error) return <h1>{error}</h1>;
 
   return (
     <>
+
+    <Helmet>
+      <title>Cari Kerja Mudah Dengan Circle Jobs</title>
+    </Helmet>
       {/* Filter */}
       <FilterJob
         description={description}
