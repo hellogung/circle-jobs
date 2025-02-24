@@ -8,8 +8,5 @@ export default defineConfig({
     react(),
     tailwindcss(),
     
-  ],
-  server: {
-    historyApiFallback: true, // ✅ Pastikan ini ada
-  },
+  ]
 })
