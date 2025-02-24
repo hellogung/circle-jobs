@@ -70,7 +70,7 @@ const DetailPage = () => {
   return (
     <>
       <Helmet>
-        <title>Circle Jobs</title>
+        <title>{title} - Circle Jobs</title>
       </Helmet>
       {/* Link Navigate */}
       <Link
